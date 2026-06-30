@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+@import "bootstrap/dist/css/bootstrap-grid.min.css";
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  --color-bg: #080B14;
+  --color-surface: #0F131E;
+  --color-accent: #6366F1;
+  --color-cyan: #14B8A6;
+  --color-heading: #F8FAFC;
+  --color-body: #94A3B8;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-bg text-body font-sans antialiased selection:bg-accent/30 selection:text-accent select-none overflow-x-hidden;
+    width: 100%;
+    position: relative;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply text-heading font-bold tracking-tight;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-surface/40 border border-white/10 backdrop-blur-xl rounded-2xl transition-all duration-300 relative overflow-hidden;
+  }
+  
+  .glass-card::before {
+    content: "";
+    @apply absolute inset-0 opacity-[0.02] pointer-events-none;
+    background-image: url('https://grainy-gradients.vercel.app/noise.svg');
+    mix-blend-mode: overlay;
+  }
+  
+  .btn-primary-custom {
+    @apply bg-accent hover:bg-accent/90 text-white px-8 py-3 rounded-full font-semibold transition-all duration-300 shadow-lg shadow-accent/20 hover:shadow-accent/50 hover:-translate-y-0.5 active:translate-y-0 ring-1 ring-white/10;
+  }
+
+  .btn-secondary-custom {
+    @apply bg-white/5 hover:bg-white/10 text-heading border border-white/10 px-8 py-3 rounded-full font-semibold transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0;
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-accent via-accent to-cyan;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-bg;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-white/10 rounded-full hover:bg-white/20 transition-colors;
+}
