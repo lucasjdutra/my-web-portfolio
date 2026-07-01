@@ -124,7 +124,9 @@ const PROJECTS = (t: any) => [
     type: "Figma Design",
     description: t === 'en' ? "E-commerce interface for pet clothing, featuring a robust design system and seamless shopping experience." : "Interface de e-commerce para roupas de pets, apresentando um design system robusto e experiência de compra fluida.",
     link: "https://www.figma.com/design/rNmZFdbwzsuRDU6RTZRebW/Design-System---DogCal%C3%A7as--Copy-?node-id=0-1&t=BiFo3VOzs7pLALFA-1",
-    linkLabel: "Figma",
+    links: [
+      { label: "Figma", url: "https://www.figma.com/design/rNmZFdbwzsuRDU6RTZRebW/Design-System---DogCal%C3%A7as--Copy-?node-id=0-1&t=BiFo3VOzs7pLALFA-1" }
+    ],
     tags: ["UI/UX", "Design System", "E-commerce", "Figma"],
     icon: <Figma className="w-6 h-6 text-cyan" />
   },
@@ -133,7 +135,9 @@ const PROJECTS = (t: any) => [
     type: "Web Platform",
     description: t === 'en' ? "Lead designer for the event management platform used by FATEC Itu College." : "Designer principal da plataforma de gestão de eventos usada pela FATEC Itu.",
     link: "https://agendafatecitu.vercel.app/",
-    linkLabel: t === 'en' ? "Webpage" : "Página web",
+    links: [
+      { label: t === 'en' ? "Webpage" : "Página web", url: "https://agendafatecitu.vercel.app/" }
+    ],
     tags: ["UI/UX", "Web Design", "Accessibility"],
     icon: <Globe className="w-6 h-6 text-accent" />
   }
@@ -154,14 +158,14 @@ const SKILLS = [
 
 const HERO_IMAGES = [
   {
-    url: img1,
-    title: "Dog Calças",
-    link: "https://www.figma.com/design/rNmZFdbwzsuRDU6RTZRebW/Design-System---DogCal%C3%A7as--Copy-?node-id=0-1&t=BiFo3VOzs7pLALFA-1"
-  },
-  {
     url: img2,
     title: "Drip Finance",
     link: "https://github.com/thethalles/drip-finance"
+  },
+  {
+    url: img1,
+    title: "Dog Calças",
+    link: "https://www.figma.com/design/rNmZFdbwzsuRDU6RTZRebW/Design-System---DogCal%C3%A7as--Copy-?node-id=0-1&t=BiFo3VOzs7pLALFA-1"
   },
   {
     url: img3,
@@ -171,7 +175,7 @@ const HERO_IMAGES = [
 ];
 
 export default function App() {
-  const [lang, setLang] = useState<'en' | 'pt'>('en');
+  const [lang, setLang] = useState<'en' | 'pt'>('pt');
   const [scrolled, setScrolled] = useState(false);
   const [showUp, setShowUp] = useState(false);
   const [showDown, setShowDown] = useState(true);
@@ -346,7 +350,7 @@ export default function App() {
                   </p>
                   
                   <div className="flex flex-wrap justify-center lg:justify-start gap-4">
-                    <a href="https://drive.google.com/file/d/1HnNRqUsFc30PnTd-Sh4PrwDCqeLWfEAz/view" target="_blank" rel="noopener noreferrer" className="btn-primary-custom flex items-center gap-2 group">
+                    <a href={lang === 'en' ? "https://drive.google.com/file/d/1GcOAgv75HCXpfBsPYYJybVv7CKXir4VK/view" : "https://drive.google.com/file/d/1tzUj5xZyutDNnjW1PkoYY1EqQp23YFbv/view"} target="_blank" rel="noopener noreferrer" className="btn-primary-custom flex items-center gap-2 group">
                       <FileText className="w-5 h-5 group-hover:rotate-12 transition-transform" />
                       {t.hero.resume}
                     </a>
@@ -397,7 +401,7 @@ export default function App() {
                           <img 
                             src={HERO_IMAGES[currentImage].url} 
                             alt={HERO_IMAGES[currentImage].title}
-                            className={`w-full h-full object-cover object-center transition-transform duration-700 group-hover/link:scale-110 ${currentImage === 0 ? 'scale-[1.08]' : ''}`}
+                            className={`w-full h-full object-cover object-center transition-transform duration-700 group-hover/link:scale-110 ${HERO_IMAGES[currentImage].url === img1 ? 'scale-[1.08]' : ''}`}
                             referrerPolicy="no-referrer"
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-bg/80 via-transparent to-transparent"></div>
@@ -486,25 +490,19 @@ export default function App() {
                           </span>
                         ))}
                       </div>
-                      {project.links ? (
-                        <div className="flex gap-6 mt-auto justify-center w-full">
-                          {project.links.map(lnk => (
-                            <a 
-                              key={lnk.label}
-                              href={lnk.url}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="flex items-center text-sm font-bold text-accent hover:text-cyan transition-colors cursor-pointer z-10"
-                            >
-                              {lnk.label} <ExternalLink className="w-4 h-4 ml-2" />
-                            </a>
-                          ))}
-                        </div>
-                      ) : (
-                        <div className="flex items-center justify-center text-sm font-bold text-accent group-hover:text-cyan transition-colors mt-auto w-full">
-                          {project.linkLabel || t.projects.viewProject} <ExternalLink className="w-4 h-4 ml-2" />
-                        </div>
-                      )}
+                      <div className="flex gap-6 mt-auto justify-center w-full">
+                        {project.links.map(lnk => (
+                          <a 
+                            key={lnk.label}
+                            href={lnk.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center text-sm font-bold text-accent hover:text-cyan transition-colors cursor-pointer z-10"
+                          >
+                            {lnk.label} <ExternalLink className="w-4 h-4 ml-2" />
+                          </a>
+                        ))}
+                      </div>
                     </>
                   );
 
@@ -521,20 +519,9 @@ export default function App() {
                       }}
                       className="h-full"
                     >
-                      {project.links ? (
-                        <div className="glass-card p-8 h-full flex flex-col items-center text-center group hover:border-accent/30 hover:-translate-y-2 hover:shadow-2xl hover:shadow-accent/10 transition-all duration-500">
-                          {cardContent}
-                        </div>
-                      ) : (
-                        <a 
-                          href={project.link} 
-                          target="_blank" 
-                          rel="noopener noreferrer"
-                          className="glass-card p-8 h-full flex flex-col items-center text-center group hover:border-accent/30 hover:-translate-y-2 hover:shadow-2xl hover:shadow-accent/10 transition-all duration-500"
-                        >
-                          {cardContent}
-                        </a>
-                      )}
+                      <div className="glass-card p-8 h-full flex flex-col items-center text-center group hover:border-accent/30 hover:-translate-y-2 hover:shadow-2xl hover:shadow-accent/10 transition-all duration-500">
+                        {cardContent}
+                      </div>
                     </motion.div>
                   );
                 })}

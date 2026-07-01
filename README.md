@@ -11,7 +11,7 @@ Este é o repositório do meu portfolio profissional de design e desenvolvimento
 
 ## ✨ Características Principais
 
-- **🌐 Mudança de Idiomas*: Alternância entre **Inglês** e **Português (BR)**, permitindo alcance global para recrutadores de qualquer localidade.
+- **🌐 Mudança de Idiomas**: Alternância entre **Inglês** e **Português (BR)**, permitindo alcance global para recrutadores de qualquer localidade.
 - **📜 Rolagem Suave**: Integração do **Lenis Scroll** para suavização da experiência de rolagem no navegador.
 - **📱 Responsividade"**: Layout responsivo para qualquer tamanho de tela, desde celulares até monitores de alta resolução.
 - **🎨 Design e Tipografia**: Escolha intencional de cores de alto contraste, tipografia elegante e uso do espaço negativo.
@@ -47,6 +47,6 @@ Este é o repositório do meu portfolio profissional de design e desenvolvimento
 
 ## 🚀 Acesso ao projeto
 
-Link para a página web no Vercel:  [Em andamento]
+Link para a página web no Vercel: [lucasdutra.vercel.app](https://lucasdutra.vercel.app/)
 
 ---
